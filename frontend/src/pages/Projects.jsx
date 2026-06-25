@@ -14,7 +14,7 @@ export default function Projects() {
       <section className="section py-12">
         <header className="mb-10">
           <h1 className="h-display text-4xl font-bold">Projects</h1>
-          <p className="text-ink-600 mt-2">Production-grade builds I've shipped.</p>
+          <p className="text-ink-600 mt-2">Production-grade builds I've worked on.</p>
         </header>
         {!items ? <Loader /> : (
           <div className="grid md:grid-cols-2 gap-5">

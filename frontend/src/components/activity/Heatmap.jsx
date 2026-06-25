@@ -4,8 +4,8 @@ const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct'
 const CELL      = 11;
 const GAP       = 2;
 const STEP      = CELL + GAP;
-const ROWS      = 6;        // max days per column
-const MONTH_GAP = 14;       // gap between month blocks
+const ROWS      = 6;
+const MONTH_GAP = 14;
 
 function getDaysInMonth(year, month) {
   return new Date(year, month + 1, 0).getDate();
@@ -26,7 +26,6 @@ export default function Heatmap({ items, year }) {
         days.push({ date, count });
       }
 
-      // Split days into columns of max ROWS each
       const columns = [];
       for (let i = 0; i < days.length; i += ROWS) {
         columns.push(days.slice(i, i + ROWS));
@@ -51,30 +50,27 @@ export default function Heatmap({ items, year }) {
 
   return (
     <div style={{ width: '100%', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+      {/* min-width forces all 12 months to always render; parent scrolls if viewport is too narrow */}
       <div style={{
-        display:        'flex',
-        gap:            `${MONTH_GAP}px`,
-        alignItems:     'flex-start',
-        justifyContent: 'center',
-        flexWrap:       'nowrap',
+        display:    'flex',
+        gap:        `${MONTH_GAP}px`,
+        alignItems: 'flex-start',
+        flexWrap:   'nowrap',
+        minWidth:   'max-content',
       }}>
         {months.map((month) => {
           const blockWidth = month.columns.length * STEP - GAP;
           return (
             <div key={month.label} style={{ flexShrink: 0, width: `${blockWidth}px` }}>
-
-              {/* Month label */}
               <div style={{
-                fontSize:    '10px',
-                fontWeight:  600,
-                color:       '#6b7280',
-                marginBottom:'5px',
-                whiteSpace:  'nowrap',
+                fontSize:     '10px',
+                fontWeight:   600,
+                color:        '#6b7280',
+                marginBottom: '5px',
+                whiteSpace:   'nowrap',
               }}>
                 {month.label}
               </div>
-
-              {/* Columns of days */}
               <div style={{ display: 'flex', gap: `${GAP}px` }}>
                 {month.columns.map((col, ci) => (
                   <div key={ci} style={{ display: 'flex', flexDirection: 'column', gap: `${GAP}px` }}>
@@ -95,7 +91,6 @@ export default function Heatmap({ items, year }) {
                   </div>
                 ))}
               </div>
-
             </div>
           );
         })}

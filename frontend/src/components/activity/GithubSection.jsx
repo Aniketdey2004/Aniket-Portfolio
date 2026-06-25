@@ -35,7 +35,7 @@ export default function GithubSection() {
         </div>
         <YearSelect value={year} onChange={setYear} years={years} />
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         <StatCard label="Public Repos" value={profile?.publicRepos || 0} accent="text-coral-600" />
         <StatCard label="Total Contributions" value={total} />
         <StatCard label="Active Days" value={activeDays} />
