@@ -3,6 +3,7 @@ const U = () => process.env.GITHUB_USERNAME || 'Aniketdey2004';
 
 exports.getProfile = async () => {
   const { data } = await axios.get(`https://api.github.com/users/${U()}`, { timeout: 15000 });
+  console.log("I am a github error please checdk me",data);
   return {
     username: data.login,
     name: data.name,

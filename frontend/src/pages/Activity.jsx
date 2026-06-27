@@ -10,7 +10,7 @@ export default function Activity() {
           <h1 className="h-display text-4xl font-bold">Coding Activity</h1>
           <p className="text-ink-600 mt-2 max-w-2xl">A live, data-driven view of my problem solving and open-source activity — pulled fresh from LeetCode and GitHub through my backend.</p>
         </header>
-        <LeetCodeSection />
+        {/* <LeetCodeSection /> */}
         <GithubSection />
       </section>
     </PageTransition>

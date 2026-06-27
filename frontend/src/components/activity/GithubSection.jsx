@@ -14,7 +14,12 @@ export default function GithubSection() {
   const [contrib, setContrib] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => { api.get('/github/profile').then((r) => setProfile(r.data)).catch(() => {}); }, []);
+  useEffect(() => { api.get('/github/profile').then((r) =>{ 
+    setProfile(r.data)
+    console.log(r);
+  }).catch(() => {}); }, []);
+
+  
   useEffect(() => {
     setLoading(true);
     api.get(`/github/contributions/${year}`).then((r) => setContrib(r.data)).catch(() => setContrib(null)).finally(() => setLoading(false));
